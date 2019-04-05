@@ -1518,7 +1518,7 @@ int JPEG_Write(FILE *fptr,BITMAP4 *image,int width,int height,int quality)
       flip = TRUE;
    quality = ABS(quality);
 
-	if ((jimage = malloc(width*3)) == NULL)
+	if ((jimage = (JSAMPLE*)malloc(width*3)) == NULL)
 		return(1);
 
 	// Error handler
@@ -1636,7 +1636,7 @@ int JPEG_Read(FILE *fptr,BITMAP4 *image,int *width,int *height)
 
 	// buffer for one scan line
 	row_stride = cinfo.output_width * cinfo.output_components;
-	if ((buffer = malloc(row_stride * sizeof(JSAMPLE))) == NULL) 
+	if ((buffer = (JSAMPLE*)malloc(row_stride * sizeof(JSAMPLE))) == NULL) 
 		return(2);
 
 	j = cinfo.output_height-1;

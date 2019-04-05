@@ -39,7 +39,6 @@ BITMAP4 *spherical = NULL;
 BITMAP4 *tiff_final = NULL;
 VARS vars;
 
-//int jpg2tiff_alfa(BITMAP4 *image,BITMAP4 *tiff_final);
 void jpg2tiff_alfa();
 
 int main(int argc,char **argv)
@@ -152,19 +151,19 @@ int main(int argc,char **argv)
 #endif
       } else if (strcmp(argv[i],"-x") == 0) {
          i++;
-         vars.transform = realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
+         vars.transform = (TRANSFORM*)realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
          vars.transform[vars.ntransform].axis = XTILT;
          vars.transform[vars.ntransform].value = DTOR*atof(argv[i]);
          vars.ntransform++;
       } else if (strcmp(argv[i],"-y") == 0) {
          i++;
-         vars.transform = realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
+         vars.transform = (TRANSFORM*)realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
          vars.transform[vars.ntransform].axis = YROLL;
          vars.transform[vars.ntransform].value = DTOR*atof(argv[i]);
          vars.ntransform++;
       } else if (strcmp(argv[i],"-z") == 0) {
          i++;
-         vars.transform = realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
+         vars.transform = (TRANSFORM*)realloc(vars.transform,(vars.ntransform+1)*sizeof(TRANSFORM));
          vars.transform[vars.ntransform].axis = ZPAN;
          vars.transform[vars.ntransform].value = DTOR*atof(argv[i]);
          vars.ntransform++;
